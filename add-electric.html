@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="./add-electric.php" method="POST">
+      <table>
+        <tr>
+          <td>
+            <label>Họ và tên: </label>
+          </td>
+          <td><input type="text" name="hoTen" required /> <br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label>Tháng: </label>
+          </td>
+          <td><input type="text" name="thang" required /> <br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label>Năm: </label>
+          </td>
+          <td><input type="text" name="nam" required /> <br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label>Chỉ số đầu: </label>
+          </td>
+          <td><input type="number" class="csd" name="chiSoDau" required /> <br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label>Chỉ số cuối: </label>
+          </td>
+          <td><input type="number" class="csc" name="chiSoCuoi" required /> <br /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" name="createElectric" value="Lưu" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
+
+<script>
+    const form = document.querySelector('form');
+    const chiSoDauEl = document.querySelector('.csd');
+    const chiSoCuoiEl = document.querySelector('.csc');
+    form.addEventListener('submit', function (e) {
+        const chiSoDau = Number(chiSoDauEl.value);
+        const chiSoCuoi = Number(chiSoCuoiEl.value);
+
+
+        if(chiSoDau <= 0) {
+            alert("Vui lòng nhập chỉ số đầu > 0")
+            e.preventDefault();
+            return
+        } else if(chiSoCuoi <= 0) {
+            e.preventDefault();
+            alert("Vui lòng nhập chỉ số cuối > 0")
+            return
+        } else if(chiSoCuoi < chiSoDau) {
+            alert("Vui lòng nhập chỉ số cuối > chỉ số đầu")
+            e.preventDefault();
+            return
+
+        } 
+});
+</script>
